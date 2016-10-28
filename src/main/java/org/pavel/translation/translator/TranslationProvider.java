@@ -1,16 +1,20 @@
 package org.pavel.translation.translator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.pavel.translation.data.TranslationWorkData;
 import org.pavel.translation.reader.TranslationReader;
 
 public class TranslationProvider
 {
   private TranslationWorkData translationData;
+  // Matches 30% and $4.33 and $5,560
+  private String regExpForNumber = "^\\$?\\d+[.,]?\\d+?%?$";
 
   public TranslationProvider()
   {
@@ -32,13 +36,18 @@ public class TranslationProvider
     if (!collect.isEmpty())
     {
       String template = collect.values().stream().findFirst().get();
-      Scanner sc = new Scanner(englishValue);
-      Double number = sc.nextDouble();
-      String translationValue = String.format(template, number);
+      List<String> numbers = getNumbersFromValue(englishValue);
+      String translationValue = String.format(template, numbers.toArray()).trim();
       return translationValue;
     }
 
-    return "";
+    return StringUtils.SPACE;
 
+  }
+
+  public List<String> getNumbersFromValue(String value) {
+    return Arrays.stream(value.split(StringUtils.SPACE))
+        .filter(s -> Pattern.compile(regExpForNumber).matcher(s).matches())
+        .collect(Collectors.toList());
   }
 }
