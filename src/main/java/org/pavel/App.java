@@ -13,8 +13,6 @@ public class App
   public static void main(String[] args)
   {
 
-    //Map<String, String> translationMap = getTranslations();
-
     readAndSetProperties();
 
     XSSFWorkbook workbookToPopulate = getWorkbookToPopulate();
@@ -25,7 +23,6 @@ public class App
 
     writeResultToFile(workbookToPopulate);
 
-    System.out.println("Hello World!");
   }
 
   private static void writeResultToFile(XSSFWorkbook workbookToPopulate)

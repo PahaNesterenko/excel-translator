@@ -14,7 +14,7 @@ public class TranslationProvider
 {
   private TranslationWorkData translationData;
   // Matches 30% and $4.33 and $5,560
-  private String regExpForNumber = "^\\$?\\d+[.,]?\\d+?%?$";
+  private String regExpForNumber = "^\\$?\\d*[.,]?\\d+?%?$";
 
   public TranslationProvider()
   {

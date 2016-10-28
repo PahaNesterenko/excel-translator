@@ -23,7 +23,7 @@ public class PropertyReader
 
       prop.load(inputStream);
 
-      System.setProperties(prop);
+      System.getProperties().putAll(prop);
 
     }
     catch (Exception e)
