@@ -68,7 +68,7 @@ public class TranslationReader
 
   private boolean notEmptyRow(XSSFRow row)
   {
-    return row.getCell(0) != null && row.getCell(1) != null && isNotEmpty(row.getCell(0).getStringCellValue())
+    return row != null && row.getCell(0) != null && row.getCell(1) != null && isNotEmpty(row.getCell(0).getStringCellValue())
         && isNotEmpty(row.getCell(1).getStringCellValue());
   }
 

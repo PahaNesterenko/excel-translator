@@ -77,7 +77,7 @@ public class TranslationProviderTest
   public void translatePerPersonPerGroup() throws Exception
   {
     String na = provider.translate("$5450 per person / $10900 per group");
-    Assert.assertEquals("$5450 por persona/ $10900 por grupo", na);
+    Assert.assertEquals("$5450 por persona / $10900 por grupo", na);
   }
 
 
